@@ -28,14 +28,22 @@ window.addEventListener('DOMContentLoaded', function () {
     console.log(cart)
     console.log(closeBtn)
 
-    openBtn.addEventListener('click', function () {
+    openBtn.addEventListener('click',  () => {
         cart.style.display = 'block'
     })
 
-    closeBtn.addEventListener('click', function () {
+    closeBtn.addEventListener('click',  () => {
         cart.style.display = 'none'
     })
 
-    buttons.forEach()
+    buttons.forEach( (item, i) => {
+        item.addEventListener('click',  () => {
+            let cloneItem = products[i].cloneNode(true),
+                btn = cloneItem.querySelector('button');
+            btn.remove()
+            field.appendChild(cloneItem)
+            products[i].remove()
+        })
+    })
 })
 
