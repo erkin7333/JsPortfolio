@@ -11,6 +11,13 @@ window.addEventListener('DOMContentLoaded', () => {
     let slideIndex = 1;
     let offset = 0;
 
+    if (slides.length < 10){
+        total.textContent = `0${slides.length}`;
+        current.textContent = `0${slideIndex}`;
+    } else {
+        total.textContent = slides.length;
+        current.textContent =slideIndex;
+    }
 
     slidesFielsd.style.width = 100 * slides.length + '%';
     slidesFielsd.style.display = 'flex';
@@ -28,6 +35,16 @@ window.addEventListener('DOMContentLoaded', () => {
             offset += +width.slice(0, width.length - 2)
         }
         slidesFielsd.style.transform = `translateX(-${offset}px)`
+        if (slideIndex == slides.length) {
+            slideIndex = 1
+        } else {
+            slideIndex ++
+        }
+        if (slides.length < 10) {
+            current.textContent = `0${slideIndex}`
+        } else {
+            current.textContent = slideIndex;
+        }
     })
 
     prev.addEventListener('click', () => {
@@ -37,5 +54,15 @@ window.addEventListener('DOMContentLoaded', () => {
             offset -= +width.slice(0, width.length - 2)
         }
         slidesFielsd.style.transform = `translateX(-${offset}px)`
+        if (slideIndex == 1) {
+            slideIndex = slides.length
+        } else {
+            slideIndex --
+        }
+        if (slides.length < 10) {
+            current.textContent = `0${slideIndex}`
+        } else {
+            current.textContent = slideIndex;
+        }
     })
 })
